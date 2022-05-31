@@ -11,7 +11,7 @@ def conversion(string):
         return float(string.rstrip('m')) * 1000000
     return float(string)
 
-courses = pd.read_csv('../coursera_data.csv', delimiter=',', index_col='id')
+courses = pd.read_csv('coursera_data.csv', delimiter=',', index_col='id')
 courses['course_students_enrolled'] = courses['course_students_enrolled'].apply(conversion)
 top_by_students = courses.sort_values(by='course_students_enrolled', ascending=False).head(10)
 plt.hist(top_by_students['course_students_enrolled'], bins=10)
